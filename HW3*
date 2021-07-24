@@ -1,0 +1,36 @@
+
+import numpy as np
+import pandas as pd
+from pandas import datetime
+
+# data visualization
+import matplotlib.pyplot as plt
+import seaborn as sns # advanced vizs
+%matplotlib inline
+
+# statistics
+from statsmodels.distributions.empirical_distribution import ECDF
+
+# time series analysis
+from statsmodels.tsa.seasonal import seasonal_decompose
+from statsmodels.graphics.tsaplots import plot_acf, plot_pacf
+
+# prophet by Facebook
+from fbprophet import Prophet
+# importing train data to learn
+train = pd.read_csv("../input/train.csv", 
+                    parse_dates = True, low_memory = False, index_col = 'Date')
+
+# additional store data
+store = pd.read_csv("../input/store.csv", 
+                    low_memory = False)
+# time series as indexes
+train.index
+DatetimeIndex(['2015-07-31', '2015-07-31', '2015-07-31', '2015-07-31',
+               '2015-07-31', '2015-07-31', '2015-07-31', '2015-07-31',
+               '2015-07-31', '2015-07-31',
+               ...
+               '2013-01-01', '2013-01-01', '2013-01-01', '2013-01-01',
+               '2013-01-01', '2013-01-01', '2013-01-01', '2013-01-01',
+               '2013-01-01', '2013-01-01'],
+              dtype='datetime64[ns]', name='Date', length=1017209, freq=None)
